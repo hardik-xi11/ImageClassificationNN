@@ -1,3 +1,5 @@
+# Model parameters: 11,308,868
+
 """
 ── Final Evaluation on Test Set ─────────────────────────
   test_loss=1.0003  test_acc=0.6825
@@ -167,7 +169,7 @@ function augment_image(img::Array{Float32,3})
         angle = (rand() - 0.5f0) * 0.5f0  # between -0.25 and 0.25 radians
         # Convert H×W×C back to Image object, rotate + resize back to original, then convert back
         c_img = colorview(RGB, permutedims(img, (3, 1, 2)))
-        rot_img = imresize(imrotate(c_img, angle), (size(img, 1), size(img, 2)))
+        rot_img = ImageTransformations.imresize(ImageTransformations.imrotate(c_img, angle), (size(img, 1), size(img, 2)))
         img = Float32.(permutedims(channelview(rot_img), (2, 3, 1)))
     end
 
