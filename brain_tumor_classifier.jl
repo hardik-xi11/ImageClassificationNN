@@ -154,6 +154,7 @@ function augment_image(img::Array{Float32,3})
         c_img = colorview(RGB, permutedims(img, (3, 1, 2)))
         rot_img = ImageTransformations.imresize(ImageTransformations.imrotate(c_img, angle), (size(img, 1), size(img, 2)))
         img = Float32.(permutedims(channelview(rot_img), (2, 3, 1)))
+        img[isnan.(img)] .= 0f0  # Fix: Replace NaN padding introduced by imrotate with black pixels
     end
 
     # Add very small random Gaussian Noise
@@ -523,7 +524,7 @@ function main()
 
     # ── Training loop ─────────────────────────────────────────────────────────
     best_val_loss = Inf
-    patience      = 7           # early-stopping patience (epochs)
+    patience      = 2           # early-stopping patience (epochs)
     no_improve    = 0
     history       = (train=Float64[], val=Float64[], val_acc=Float64[])
 
