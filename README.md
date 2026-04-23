@@ -1,8 +1,8 @@
 
-## Brain Tumour Dataset results
+# Brain Tumour Dataset results
 
 Loading best checkpoint: best_model.bson
-
+```
 ============================================================
   FINAL TEST RESULTS
 ============================================================
@@ -26,12 +26,11 @@ gli     327     37     29      7
 men       3    387      4      6  
 not       0      0    400      0  
 pit       0      0      2    398  
+```
+---
 
-
-## Covid-19 dataset
-
-Loading best checkpoint: best_model.bson
-
+# Covid-19 dataset
+```
 ============================================================
   FINAL TEST RESULTS
 ============================================================
@@ -54,3 +53,4 @@ Cov      26      0      0
 Nor       0     13      7  
 Vir       0      1     19  
 ([26 0 0; 0 13 1; 0 7 19], 0.8787878787878788)
+```
